@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  cache:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  redisAdmin: # Redis Ad;in is a simple php interface
+    image: erikdubbelboer/phpredisadmin
+    ports:
+      - "8001:80"
+    environment:
+      REDIS_1_HOST: cache
+      REDIS_1_PORT: 6379
+      REDIS_1_NAME: localhost
